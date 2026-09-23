@@ -55,6 +55,303 @@ function useFonts() {
 }
 
 /* ============================================================
+   CONTENT — Genesis 1
+   ============================================================ */
+   const GENESIS_1 = [
+    {
+      v: 1,
+      jp: 'はじめに神は天と地とを創造された。',
+      en: 'In the beginning, God created the heavens and the earth.',
+    },
+    {
+      v: 2,
+      jp: '地は形なく、むなしく、やみが淵のおもてにあり、神の霊が水のおもてをおおっていた。',
+      en: 'The earth was formless and empty. Darkness was over the surface of the deep, and the Spirit of God was hovering over the surface of the waters.',
+    },
+    {
+      v: 3,
+      jp: '神は「光あれ」と言われた。すると光があった。',
+      en: 'God said, \u201CLet there be light,\u201D and there was light.',
+    },
+    {
+      v: 4,
+      jp: '神はその光を見て、良しとされた。神は光とやみとを分けられた。',
+      en: 'God saw the light, and it was good. God separated the light from the darkness.',
+    },
+    {
+      v: 5,
+      jp: '神は光を昼と名づけ、やみを夜と名づけられた。夕となり、また朝となった。第一日である。',
+      en: 'God called the light Day, and the darkness he called Night. There was evening and there was morning \u2014 the first day.',
+    },
+    {
+      v: 6,
+      jp: '神はまた言われた、「水の間に大空があって、水と水とを分けよ」。',
+      en: 'God said, \u201CLet there be an expanse between the waters, to separate water from water.\u201D',
+    },
+    {
+      v: 7,
+      jp: '神は大空を造って、大空の下の水と大空の上の水とを分けられた。そのようになった。',
+      en: 'God made the expanse and separated the water under the expanse from the water above it. And it was so.',
+    },
+    {
+      v: 8,
+      jp: '神は大空を天と名づけられた。夕となり、また朝となった。第二日である。',
+      en: 'God called the expanse Sky. There was evening and there was morning \u2014 the second day.',
+    },
+    {
+      v: 9,
+      jp: '神はまた言われた、「天の下の水は一つ所に集まり、かわいた地が現れよ」。そのようになった。',
+      en: 'God said, \u201CLet the water under the sky be gathered into one place, and let dry ground appear.\u201D And it was so.',
+    },
+    {
+      v: 10,
+      jp: '神はそのかわいた地を陸と名づけ、水の集まった所を海と名づけられた。神は見て、良しとされた。',
+      en: 'God called the dry ground Land, and the gathered waters he called Seas. God saw that it was good.',
+    },
+    {
+      v: 11,
+      jp: '神はまた言われた、「地は青草と、種をもつ草と、種類にしたがって種のある実を結ぶ果樹とを地に生えさせよ」。そのようになった。',
+      en: 'God said, \u201CLet the earth produce green plants, plants bearing seed, and fruit trees bearing fruit with seed in it, each according to its kind.\u201D And it was so.',
+      overrides: { 生: 'は' },
+    },
+    {
+      v: 12,
+      jp: '地は青草と、種類にしたがって種をもつ草と、種類にしたがって種のある実を結ぶ木とを生じた。神は見て、良しとされた。',
+      en: 'The earth produced green plants, plants bearing seed according to their kinds, and trees bearing fruit with seed in it according to their kinds. God saw that it was good.',
+    },
+    {
+      v: 13,
+      jp: '夕となり、また朝となった。第三日である。',
+      en: 'There was evening and there was morning \u2014 the third day.',
+    },
+    {
+      v: 14,
+      jp: '神はまた言われた、「天の大空に光る物があって、昼と夜とを分け、しるしのため、季節のため、日のため、年のためになり、',
+      en: 'God said, \u201CLet there be lights in the expanse of the sky to separate day from night. Let them serve as signs, and for seasons, and for days and years,',
+    },
+    {
+      v: 15,
+      jp: '天の大空にあって地を照らす光となれ」。そのようになった。',
+      en: 'and let them be lights in the expanse of the sky to give light on the earth.\u201D And it was so.',
+    },
+    {
+      v: 16,
+      jp: '神は二つの大きな光る物と星とを造り、大きい光る物には昼をつかさどらせ、小さい光る物には夜をつかさどらせた。',
+      en: 'God made two great lights \u2014 the greater light to govern the day and the lesser light to govern the night \u2014 and the stars also.',
+    },
+    {
+      v: 17,
+      jp: '神はこれらを天の大空に置いて地を照らさせ、',
+      en: 'God set them in the expanse of the sky to give light on the earth,',
+    },
+    {
+      v: 18,
+      jp: '昼と夜とをつかさどらせ、光とやみとを分けさせられた。神は見て、良しとされた。',
+      en: 'to govern the day and the night, and to separate the light from the darkness. God saw that it was good.',
+    },
+    {
+      v: 19,
+      jp: '夕となり、また朝となった。第四日である。',
+      en: 'There was evening and there was morning \u2014 the fourth day.',
+    },
+    {
+      v: 20,
+      jp: '神はまた言われた、「水は生物の群れで満ち、鳥は地の上、天の大空を飛べ」。',
+      en: 'God said, \u201CLet the waters teem with living creatures, and let birds fly above the earth, across the expanse of the sky.\u201D',
+    },
+    {
+      v: 21,
+      jp: '神は大きな海の獣と、水に群がるすべての動くもの、すなわちその種類にしたがって、また羽のある鳥をその種類にしたがって創造された。神は見て、良しとされた。',
+      en: 'God created the great sea creatures, and every living thing that moves, with which the waters teem, according to their kinds, and every winged bird according to its kind. God saw that it was good.',
+      overrides: { 群: 'むら' },
+    },
+    {
+      v: 22,
+      jp: '神はこれらを祝福して言われた、「生めよ、ふえよ、海の水に満ちよ、また鳥は地にふえよ」。',
+      en: 'God blessed them, saying, \u201CBe fruitful and multiply and fill the waters of the seas, and let the birds multiply on the earth.\u201D',
+      overrides: { 生: 'う' },
+    },
+    {
+      v: 23,
+      jp: '夕となり、また朝となった。第五日である。',
+      en: 'There was evening and there was morning \u2014 the fifth day.',
+    },
+    {
+      v: 24,
+      jp: '神はまた言われた、「地は生物をその種類にしたがっていだせ、家畜と、這うものと、地の獣とをその種類にしたがっていだせ」。そのようになった。',
+      en: 'God said, \u201CLet the earth produce living creatures according to their kinds \u2014 livestock, creeping things, and wild animals, each according to its kind.\u201D And it was so.',
+    },
+    {
+      v: 25,
+      jp: '神は地の獣をその種類にしたがい、家畜をその種類にしたがい、また地のすべての這うものをその種類にしたがって造られた。神は見て、良しとされた。',
+      en: 'God made the wild animals according to their kinds, the livestock according to their kinds, and everything that creeps on the ground according to its kind. God saw that it was good.',
+    },
+    {
+      v: 26,
+      jp: '神はまた言われた、「われわれのかたちに、われわれにかたどって人を造り、これに海の魚と、空の鳥と、家畜と、地のすべての獣と、地のすべての這うものとを治めさせよう」。',
+      en: 'God said, \u201CLet us make man in our image, after our likeness, and let them rule over the fish of the sea, the birds of the sky, the livestock, and every creeping thing that creeps on the earth.\u201D',
+    },
+    {
+      v: 27,
+      jp: '神は自分のかたちに人を創造された。すなわち、神のかたちに創造し、男と女とに創造された。',
+      en: 'God created man in his own image; in the image of God he created him; male and female he created them.',
+    },
+    {
+      v: 28,
+      jp: '神は彼らを祝福して言われた、「生めよ、ふえよ、地に満ちよ、地を従わせよ。また海の魚と、空の鳥と、地に動くすべての生物とを治めよ」。',
+      en: 'God blessed them and said to them, \u201CBe fruitful, multiply, fill the earth, and subdue it. Rule over the fish of the sea, the birds of the sky, and every living thing that moves on the earth.\u201D',
+      overrides: { 生: 'う' },
+    },
+    {
+      v: 29,
+      jp: '神はまた言われた、「見よ、わたしは全地のおもてにある種をもつすべての草と、種のある実を結ぶすべての木とをあなたがたに与える。それはあなたがたの食物となるであろう。',
+      en: 'God said, \u201CLook, I have given you every plant bearing seed on the face of the whole earth, and every tree with fruit bearing seed. They will be food for you.',
+    },
+    {
+      v: 30,
+      jp: 'また地のすべての獣、空のすべての鳥、地を這うすべてのもの、すなわち命あるものには、食物としてすべての青草を与える」。そのようになった。',
+      en: 'And to every animal of the earth, every bird of the sky, and everything that creeps on the ground \u2014 everything that has the breath of life \u2014 I give every green plant for food.\u201D And it was so.',
+    },
+    {
+      v: 31,
+      jp: '神が造ったすべての物を見られたところ、それは、はなはだ良かった。夕となり、また朝となった。第六日である。',
+      en: 'God saw everything he had made, and it was very good. There was evening and there was morning \u2014 the sixth day.',
+    },
+  ];
+  const GENESIS_2 = [
+    {
+      v: 1,
+      jp: 'こうして天と地と、その万象とが完成した。',
+      en: 'Thus the heavens and the earth were completed in all their vast array.',
+    },
+    {
+      v: 2,
+      jp: '神は第七日に、その作業を終えられた。すなわち、そのすべての作業を終って、第七日に休まれた。',
+      en: 'By the seventh day God had finished the work He had been doing; so on the seventh day He rested from all His work.',
+    },
+    {
+      v: 3,
+      jp: '神は第七日を祝福して、これを聖別された。神がこの日に、そのすべての創造のわざを終って休まれたからである。',
+      en: 'Then God blessed the seventh day and made it holy, because on it He rested from all the work of creation that He had accomplished.',
+    },
+    {
+      v: 4,
+      jp: 'これは天地創造の由来である。主なる神が地と天とを造られた時、',
+      en: 'This is the account of the heavens and the earth when they were created, in the day that the LORD God made the earth and the heavens.',
+    },
+    {
+      v: 5,
+      jp: '地にはまだ野の木もなく、野の草もまだはえていなかった。主なる神が地に雨を降らせず、また土を耕す人もなかったからである。',
+      en: 'Now no shrub of the field had yet appeared on the earth, and no plant of the field had yet sprung up, for the LORD God had not sent rain upon the earth, and there was no man to cultivate the ground.',
+    },
+    {
+      v: 6,
+      jp: 'しかし、水が地からわきあがって、土の全面を潤していた。',
+      en: 'But a mist would rise from the earth and water the whole surface of the ground.',
+    },
+    {
+      v: 7,
+      jp: '主なる神は土のちりで人を造り、命の息をその鼻に吹きいれられた。そこで人は生きた者となった。',
+      en: 'Then the LORD God formed a man from the dust of the ground and breathed into his nostrils the breath of life, and the man became a living being.',
+    },
+    {
+      v: 8,
+      jp: '主なる神は東のかたエデンに園を造り、そこにご自分で造った人を置かれた。',
+      en: 'And the LORD God planted a garden in Eden, in the east, and there He put the man He had formed.',
+    },
+    {
+      v: 9,
+      jp: 'また主なる神は、見て美しく、食べるに良いすべての木を土からはえさせ、園の中央には命の木と善悪を知る木とをはえさせられた。',
+      en: 'And the LORD God made all kinds of trees grow out of the ground—trees that were pleasing to the eye and good for food. In the middle of the garden were the tree of life and the tree of the knowledge of good and evil.',
+    },
+    {
+      v: 10,
+      jp: 'ひとつの川がエデンから流れ出て園を潤し、そこから分れて四つの川となった。',
+      en: 'A river flowed from Eden to water the garden, and from there it branched into four headwaters.',
+    },
+    {
+      v: 11,
+      jp: 'その第一の名はピションといい、金のあるハビラの全地をめぐる。',
+      en: 'The name of the first is Pishon; it winds through the entire land of Havilah, where there is gold.',
+    },
+    {
+      v: 12,
+      jp: 'その地の金は良質で、またそこにはブドラクとしまめのうとがある。',
+      en: 'The gold of that land is pure; bdellium and onyx are also there.',
+    },
+    {
+      v: 13,
+      jp: '第二の川の名はギホンといい、クシュの全地をめぐる。',
+      en: 'The name of the second river is Gihon; it winds through the entire land of Cush.',
+    },
+    {
+      v: 14,
+      jp: '第三の川の名はヒデケルといい、アッスルの東を流れる。第四の川はユーフラテスである。',
+      en: 'The name of the third river is Tigris; it runs along the east side of Asshur. And the fourth river is the Euphrates.',
+    },
+    {
+      v: 15,
+      jp: '主なる神は人を連れて行ってエデンに置き、これを耕させ、これを守らせた。',
+      en: 'The LORD God took the man and placed him in the Garden of Eden to work it and watch over it.',
+    },
+    {
+      v: 16,
+      jp: '主なる神はその人に命じて言われた、「あなたは園のどの木からでも思いのままに取って食べなさい。',
+      en: 'And the LORD God commanded the man, "You are free to eat from any tree of the garden,',
+    },
+    {
+      v: 17,
+      jp: 'しかし善悪を知る木からは取って食べてはならない。それを取って食べると、きっと死ぬであろう」。',
+      en: 'but you must not eat from the tree of the knowledge of good and evil; for in the day that you eat of it, you will surely die." ',
+    },
+    {
+      v: 18,
+      jp: '主なる神は言われた、「人がひとりでいるのは良くない。彼のために、ふさわしい助け手を造ろう」。',
+      en: 'Then the LORD God said, "It is not good for the man to be alone. I will make a helper suitable for him." ',
+    },
+    {
+      v: 19,
+      jp: '主なる神は野のあらゆる獣と、空のあらゆる鳥とを土で造り、人に導いて、彼がそれにどんな名を付けるかを見られた。人がすべて生き物に与える名は、その名となるのであった。',
+      en: 'So the LORD God formed out of the ground every beast of the field and every bird of the air, and brought them to the man to see what he would call them. And whatever the man called each living creature, that was its name.',
+    },
+    {
+      v: 20,
+      jp: 'それで人はすべての家畜、空の鳥、野のあらゆる獣に名をつけたが、人にはふさわしい助け手が見つからなかった。',
+      en: 'So the man gave names to all the livestock, the birds of the air, and every beast of the field. But for Adam, no suitable helper was found.',
+    },
+    {
+      v: 21,
+      jp: 'そこで主なる神は人を深く眠らせ、眠った時に、そのあばら骨の一つをとり、その所を肉でふさがれた。',
+      en: 'So the LORD God caused the man to fall into a deep sleep, and while he was sleeping, He took one of the man’s ribs and closed up the place with flesh.',
+    },
+    {
+      v: 22,
+      jp: '主なる神は人から取ったあばら骨でひとりの女を造り、人のところに導いてこられた。',
+      en: 'Then the LORD God made a woman from the rib He had taken out of the man, and He brought her to the man.',
+    },
+    {
+      v: 23,
+      jp: '人は言った、「これこそ、わたしの骨の骨、わたしの肉の肉。男から取ったものだから、女と名づけよう」。',
+      en: 'And the man said, "This is now bone of my bones and flesh of my flesh; she shall be called ‘woman,’ for she was taken out of man." ',
+    },
+    {
+      v: 24,
+      jp: 'それゆえ男はその父母を離れて女と結び合い、一体となるのである。',
+      en: 'For this reason a man will leave his father and mother and be united to his wife, and they will become one flesh.',
+    },
+    {
+      v: 25,
+      jp: '人とその妻とは、ふたりとも裸であったが、恥ずかしがらなかった。',
+      en: 'And the man and his wife were both naked, yet they felt no shame.',
+    },
+  ];
+  const CHAPTER_DATA = {
+    1: GENESIS_1,
+    2: GENESIS_2,
+    // We'll add Genesis 3 here once you have it
+  };
+
+/* ============================================================
    KANA -> ROMAJI ENGINE
    ============================================================ */
 const KANA = {
@@ -402,302 +699,7 @@ function jpRomaji(text) {
   return verseRomaji(annotate(text));
 }
 
-/* ============================================================
-   CONTENT — Genesis 1
-   ============================================================ */
-const GENESIS_1 = [
-  {
-    v: 1,
-    jp: 'はじめに神は天と地とを創造された。',
-    en: 'In the beginning, God created the heavens and the earth.',
-  },
-  {
-    v: 2,
-    jp: '地は形なく、むなしく、やみが淵のおもてにあり、神の霊が水のおもてをおおっていた。',
-    en: 'The earth was formless and empty. Darkness was over the surface of the deep, and the Spirit of God was hovering over the surface of the waters.',
-  },
-  {
-    v: 3,
-    jp: '神は「光あれ」と言われた。すると光があった。',
-    en: 'God said, \u201CLet there be light,\u201D and there was light.',
-  },
-  {
-    v: 4,
-    jp: '神はその光を見て、良しとされた。神は光とやみとを分けられた。',
-    en: 'God saw the light, and it was good. God separated the light from the darkness.',
-  },
-  {
-    v: 5,
-    jp: '神は光を昼と名づけ、やみを夜と名づけられた。夕となり、また朝となった。第一日である。',
-    en: 'God called the light Day, and the darkness he called Night. There was evening and there was morning \u2014 the first day.',
-  },
-  {
-    v: 6,
-    jp: '神はまた言われた、「水の間に大空があって、水と水とを分けよ」。',
-    en: 'God said, \u201CLet there be an expanse between the waters, to separate water from water.\u201D',
-  },
-  {
-    v: 7,
-    jp: '神は大空を造って、大空の下の水と大空の上の水とを分けられた。そのようになった。',
-    en: 'God made the expanse and separated the water under the expanse from the water above it. And it was so.',
-  },
-  {
-    v: 8,
-    jp: '神は大空を天と名づけられた。夕となり、また朝となった。第二日である。',
-    en: 'God called the expanse Sky. There was evening and there was morning \u2014 the second day.',
-  },
-  {
-    v: 9,
-    jp: '神はまた言われた、「天の下の水は一つ所に集まり、かわいた地が現れよ」。そのようになった。',
-    en: 'God said, \u201CLet the water under the sky be gathered into one place, and let dry ground appear.\u201D And it was so.',
-  },
-  {
-    v: 10,
-    jp: '神はそのかわいた地を陸と名づけ、水の集まった所を海と名づけられた。神は見て、良しとされた。',
-    en: 'God called the dry ground Land, and the gathered waters he called Seas. God saw that it was good.',
-  },
-  {
-    v: 11,
-    jp: '神はまた言われた、「地は青草と、種をもつ草と、種類にしたがって種のある実を結ぶ果樹とを地に生えさせよ」。そのようになった。',
-    en: 'God said, \u201CLet the earth produce green plants, plants bearing seed, and fruit trees bearing fruit with seed in it, each according to its kind.\u201D And it was so.',
-    overrides: { 生: 'は' },
-  },
-  {
-    v: 12,
-    jp: '地は青草と、種類にしたがって種をもつ草と、種類にしたがって種のある実を結ぶ木とを生じた。神は見て、良しとされた。',
-    en: 'The earth produced green plants, plants bearing seed according to their kinds, and trees bearing fruit with seed in it according to their kinds. God saw that it was good.',
-  },
-  {
-    v: 13,
-    jp: '夕となり、また朝となった。第三日である。',
-    en: 'There was evening and there was morning \u2014 the third day.',
-  },
-  {
-    v: 14,
-    jp: '神はまた言われた、「天の大空に光る物があって、昼と夜とを分け、しるしのため、季節のため、日のため、年のためになり、',
-    en: 'God said, \u201CLet there be lights in the expanse of the sky to separate day from night. Let them serve as signs, and for seasons, and for days and years,',
-  },
-  {
-    v: 15,
-    jp: '天の大空にあって地を照らす光となれ」。そのようになった。',
-    en: 'and let them be lights in the expanse of the sky to give light on the earth.\u201D And it was so.',
-  },
-  {
-    v: 16,
-    jp: '神は二つの大きな光る物と星とを造り、大きい光る物には昼をつかさどらせ、小さい光る物には夜をつかさどらせた。',
-    en: 'God made two great lights \u2014 the greater light to govern the day and the lesser light to govern the night \u2014 and the stars also.',
-  },
-  {
-    v: 17,
-    jp: '神はこれらを天の大空に置いて地を照らさせ、',
-    en: 'God set them in the expanse of the sky to give light on the earth,',
-  },
-  {
-    v: 18,
-    jp: '昼と夜とをつかさどらせ、光とやみとを分けさせられた。神は見て、良しとされた。',
-    en: 'to govern the day and the night, and to separate the light from the darkness. God saw that it was good.',
-  },
-  {
-    v: 19,
-    jp: '夕となり、また朝となった。第四日である。',
-    en: 'There was evening and there was morning \u2014 the fourth day.',
-  },
-  {
-    v: 20,
-    jp: '神はまた言われた、「水は生物の群れで満ち、鳥は地の上、天の大空を飛べ」。',
-    en: 'God said, \u201CLet the waters teem with living creatures, and let birds fly above the earth, across the expanse of the sky.\u201D',
-  },
-  {
-    v: 21,
-    jp: '神は大きな海の獣と、水に群がるすべての動くもの、すなわちその種類にしたがって、また羽のある鳥をその種類にしたがって創造された。神は見て、良しとされた。',
-    en: 'God created the great sea creatures, and every living thing that moves, with which the waters teem, according to their kinds, and every winged bird according to its kind. God saw that it was good.',
-    overrides: { 群: 'むら' },
-  },
-  {
-    v: 22,
-    jp: '神はこれらを祝福して言われた、「生めよ、ふえよ、海の水に満ちよ、また鳥は地にふえよ」。',
-    en: 'God blessed them, saying, \u201CBe fruitful and multiply and fill the waters of the seas, and let the birds multiply on the earth.\u201D',
-    overrides: { 生: 'う' },
-  },
-  {
-    v: 23,
-    jp: '夕となり、また朝となった。第五日である。',
-    en: 'There was evening and there was morning \u2014 the fifth day.',
-  },
-  {
-    v: 24,
-    jp: '神はまた言われた、「地は生物をその種類にしたがっていだせ、家畜と、這うものと、地の獣とをその種類にしたがっていだせ」。そのようになった。',
-    en: 'God said, \u201CLet the earth produce living creatures according to their kinds \u2014 livestock, creeping things, and wild animals, each according to its kind.\u201D And it was so.',
-  },
-  {
-    v: 25,
-    jp: '神は地の獣をその種類にしたがい、家畜をその種類にしたがい、また地のすべての這うものをその種類にしたがって造られた。神は見て、良しとされた。',
-    en: 'God made the wild animals according to their kinds, the livestock according to their kinds, and everything that creeps on the ground according to its kind. God saw that it was good.',
-  },
-  {
-    v: 26,
-    jp: '神はまた言われた、「われわれのかたちに、われわれにかたどって人を造り、これに海の魚と、空の鳥と、家畜と、地のすべての獣と、地のすべての這うものとを治めさせよう」。',
-    en: 'God said, \u201CLet us make man in our image, after our likeness, and let them rule over the fish of the sea, the birds of the sky, the livestock, and every creeping thing that creeps on the earth.\u201D',
-  },
-  {
-    v: 27,
-    jp: '神は自分のかたちに人を創造された。すなわち、神のかたちに創造し、男と女とに創造された。',
-    en: 'God created man in his own image; in the image of God he created him; male and female he created them.',
-  },
-  {
-    v: 28,
-    jp: '神は彼らを祝福して言われた、「生めよ、ふえよ、地に満ちよ、地を従わせよ。また海の魚と、空の鳥と、地に動くすべての生物とを治めよ」。',
-    en: 'God blessed them and said to them, \u201CBe fruitful, multiply, fill the earth, and subdue it. Rule over the fish of the sea, the birds of the sky, and every living thing that moves on the earth.\u201D',
-    overrides: { 生: 'う' },
-  },
-  {
-    v: 29,
-    jp: '神はまた言われた、「見よ、わたしは全地のおもてにある種をもつすべての草と、種のある実を結ぶすべての木とをあなたがたに与える。それはあなたがたの食物となるであろう。',
-    en: 'God said, \u201CLook, I have given you every plant bearing seed on the face of the whole earth, and every tree with fruit bearing seed. They will be food for you.',
-  },
-  {
-    v: 30,
-    jp: 'また地のすべての獣、空のすべての鳥、地を這うすべてのもの、すなわち命あるものには、食物としてすべての青草を与える」。そのようになった。',
-    en: 'And to every animal of the earth, every bird of the sky, and everything that creeps on the ground \u2014 everything that has the breath of life \u2014 I give every green plant for food.\u201D And it was so.',
-  },
-  {
-    v: 31,
-    jp: '神が造ったすべての物を見られたところ、それは、はなはだ良かった。夕となり、また朝となった。第六日である。',
-    en: 'God saw everything he had made, and it was very good. There was evening and there was morning \u2014 the sixth day.',
-  },
-];
-const GENESIS_2 = [
-  {
-    v: 1,
-    jp: 'こうして天と地と、その万象とが完成した。',
-    en: 'Thus the heavens and the earth were completed in all their vast array.',
-  },
-  {
-    v: 2,
-    jp: '神は第七日に、その作業を終えられた。すなわち、そのすべての作業を終って、第七日に休まれた。',
-    en: 'By the seventh day God had finished the work He had been doing; so on the seventh day He rested from all His work.',
-  },
-  {
-    v: 3,
-    jp: '神は第七日を祝福して、これを聖別された。神がこの日に、そのすべての創造のわざを終って休まれたからである。',
-    en: 'Then God blessed the seventh day and made it holy, because on it He rested from all the work of creation that He had accomplished.',
-  },
-  {
-    v: 4,
-    jp: 'これは天地創造の由来である。主なる神が地と天とを造られた時、',
-    en: 'This is the account of the heavens and the earth when they were created, in the day that the LORD God made the earth and the heavens.',
-  },
-  {
-    v: 5,
-    jp: '地にはまだ野の木もなく、野の草もまだはえていなかった。主なる神が地に雨を降らせず、また土を耕す人もなかったからである。',
-    en: 'Now no shrub of the field had yet appeared on the earth, and no plant of the field had yet sprung up, for the LORD God had not sent rain upon the earth, and there was no man to cultivate the ground.',
-  },
-  {
-    v: 6,
-    jp: 'しかし、水が地からわきあがって、土の全面を潤していた。',
-    en: 'But a mist would rise from the earth and water the whole surface of the ground.',
-  },
-  {
-    v: 7,
-    jp: '主なる神は土のちりで人を造り、命の息をその鼻に吹きいれられた。そこで人は生きた者となった。',
-    en: 'Then the LORD God formed a man from the dust of the ground and breathed into his nostrils the breath of life, and the man became a living being.',
-  },
-  {
-    v: 8,
-    jp: '主なる神は東のかたエデンに園を造り、そこにご自分で造った人を置かれた。',
-    en: 'And the LORD God planted a garden in Eden, in the east, and there He put the man He had formed.',
-  },
-  {
-    v: 9,
-    jp: 'また主なる神は、見て美しく、食べるに良いすべての木を土からはえさせ、園の中央には命の木と善悪を知る木とをはえさせられた。',
-    en: 'And the LORD God made all kinds of trees grow out of the ground—trees that were pleasing to the eye and good for food. In the middle of the garden were the tree of life and the tree of the knowledge of good and evil.',
-  },
-  {
-    v: 10,
-    jp: 'ひとつの川がエデンから流れ出て園を潤し、そこから分れて四つの川となった。',
-    en: 'A river flowed from Eden to water the garden, and from there it branched into four headwaters.',
-  },
-  {
-    v: 11,
-    jp: 'その第一の名はピションといい、金のあるハビラの全地をめぐる。',
-    en: 'The name of the first is Pishon; it winds through the entire land of Havilah, where there is gold.',
-  },
-  {
-    v: 12,
-    jp: 'その地の金は良質で、またそこにはブドラクとしまめのうとがある。',
-    en: 'The gold of that land is pure; bdellium and onyx are also there.',
-  },
-  {
-    v: 13,
-    jp: '第二の川の名はギホンといい、クシュの全地をめぐる。',
-    en: 'The name of the second river is Gihon; it winds through the entire land of Cush.',
-  },
-  {
-    v: 14,
-    jp: '第三の川の名はヒデケルといい、アッスルの東を流れる。第四の川はユーフラテスである。',
-    en: 'The name of the third river is Tigris; it runs along the east side of Asshur. And the fourth river is the Euphrates.',
-  },
-  {
-    v: 15,
-    jp: '主なる神は人を連れて行ってエデンに置き、これを耕させ、これを守らせた。',
-    en: 'The LORD God took the man and placed him in the Garden of Eden to work it and watch over it.',
-  },
-  {
-    v: 16,
-    jp: '主なる神はその人に命じて言われた、「あなたは園のどの木からでも思いのままに取って食べなさい。',
-    en: 'And the LORD God commanded the man, "You are free to eat from any tree of the garden,',
-  },
-  {
-    v: 17,
-    jp: 'しかし善悪を知る木からは取って食べてはならない。それを取って食べると、きっと死ぬであろう」。',
-    en: 'but you must not eat from the tree of the knowledge of good and evil; for in the day that you eat of it, you will surely die." ',
-  },
-  {
-    v: 18,
-    jp: '主なる神は言われた、「人がひとりでいるのは良くない。彼のために、ふさわしい助け手を造ろう」。',
-    en: 'Then the LORD God said, "It is not good for the man to be alone. I will make a helper suitable for him." ',
-  },
-  {
-    v: 19,
-    jp: '主なる神は野のあらゆる獣と、空のあらゆる鳥とを土で造り、人に導いて、彼がそれにどんな名を付けるかを見られた。人がすべて生き物に与える名は、その名となるのであった。',
-    en: 'So the LORD God formed out of the ground every beast of the field and every bird of the air, and brought them to the man to see what he would call them. And whatever the man called each living creature, that was its name.',
-  },
-  {
-    v: 20,
-    jp: 'それで人はすべての家畜、空の鳥、野のあらゆる獣に名をつけたが、人にはふさわしい助け手が見つからなかった。',
-    en: 'So the man gave names to all the livestock, the birds of the air, and every beast of the field. But for Adam, no suitable helper was found.',
-  },
-  {
-    v: 21,
-    jp: 'そこで主なる神は人を深く眠らせ、眠った時に、そのあばら骨の一つをとり、その所を肉でふさがれた。',
-    en: 'So the LORD God caused the man to fall into a deep sleep, and while he was sleeping, He took one of the man’s ribs and closed up the place with flesh.',
-  },
-  {
-    v: 22,
-    jp: '主なる神は人から取ったあばら骨でひとりの女を造り、人のところに導いてこられた。',
-    en: 'Then the LORD God made a woman from the rib He had taken out of the man, and He brought her to the man.',
-  },
-  {
-    v: 23,
-    jp: '人は言った、「これこそ、わたしの骨の骨、わたしの肉の肉。男から取ったものだから、女と名づけよう」。',
-    en: 'And the man said, "This is now bone of my bones and flesh of my flesh; she shall be called ‘woman,’ for she was taken out of man." ',
-  },
-  {
-    v: 24,
-    jp: 'それゆえ男はその父母を離れて女と結び合い、一体となるのである。',
-    en: 'For this reason a man will leave his father and mother and be united to his wife, and they will become one flesh.',
-  },
-  {
-    v: 25,
-    jp: '人とその妻とは、ふたりとも裸であったが、恥ずかしがらなかった。',
-    en: 'And the man and his wife were both naked, yet they felt no shame.',
-  },
-];
-const CHAPTER_DATA = {
-  1: GENESIS_1,
-  2: GENESIS_2,
-  // We'll add Genesis 3 here once you have it
-};
+
 const BOOKS = [
   ['創世記', 'Genesis', 50],
   ['出エジプト記', 'Exodus', 40],
@@ -1703,54 +1705,61 @@ export default function App() {
                       padding: '4px 8px 10px 8px',
                     }}
                   >
-                    {Array.from({ length: chapters }).map((_, ci) => (
-                      <span
-                        key={ci}
-                        onClick={
-                          ci === 0
-                            ? () => {
-                                setPage('read');
-                                showToast('Genesis 1');
-                              }
-                            : undefined
-                        }
-                        style={{
-                          fontSize: 11,
-                          width: 23,
-                          height: 23,
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          borderRadius: 5,
-                          position: 'relative',
-                          background: ci === 0 ? VERM : '#E6DAC2',
-                          color: ci === 0 ? '#fff' : '#B8A985',
-                          cursor: ci === 0 ? 'pointer' : 'default',
-                        }}
-                        title={
-                          ci === 0
-                            ? isRead
-                              ? 'Genesis 1 — read'
-                              : 'Genesis 1 — open'
-                            : 'Coming soon'
-                        }
-                      >
-                        {ci + 1}
-                        {ci === 0 && isRead && (
-                          <CheckCircle2
-                            size={11}
-                            style={{
-                              position: 'absolute',
-                              top: -4,
-                              right: -4,
-                              background: '#EDE4D2',
-                              borderRadius: '50%',
-                              color: '#3C7A4E',
-                            }}
-                          />
-                        )}
-                      </span>
-                    ))}
+                                        {Array.from({ length: chapters }).map((_, ci) => {
+                      const chapterNum = ci + 1;
+                      const isCurrent = chapterNum === currentChapter;
+                      const isChapterAvailable = CHAPTER_DATA[chapterNum]; // Check if chapter data exists
+                      console.log(`Chapter ${chapterNum}: isChapterAvailable = ${isChapterAvailable}`);
+                      return (
+                        <span
+                          key={ci}
+                          onClick={
+                            isChapterAvailable
+                              ? () => {
+                                  setPage('read');
+                                  setCurrentChapter(chapterNum); // Set the current chapter
+                                  showToast(`Genesis ${chapterNum}`);
+                                }
+                              : undefined
+                          }
+                          style={{
+                            fontSize: 11,
+                            width: 23,
+                            height: 23,
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            borderRadius: 5,
+                            position: 'relative',
+                            background: isCurrent ? VERM : (isChapterAvailable ? '#E6DAC2' : '#F0EBE0'), // Highlight current, dim unavailable
+                            color: isCurrent ? '#fff' : (isChapterAvailable ? '#B8A985' : '#C0B8A0'), // Text color
+                            cursor: isChapterAvailable ? 'pointer' : 'default',
+                          }}
+                          title={
+                            isChapterAvailable
+                              ? isCurrent && isRead // Only show read status if it's the current chapter and it's marked read
+                                ? `Genesis ${chapterNum} — read`
+                                : `Genesis ${chapterNum} — open`
+                              : 'Coming soon'
+                          }
+                        >
+                          {chapterNum}
+                          {isCurrent && isRead && ( // Show checkmark only if it's the current chapter and marked read
+                            <CheckCircle2
+                              size={11}
+                              style={{
+                                position: 'absolute',
+                                top: -4,
+                                right: -4,
+                                background: '#EDE4D2',
+                                borderRadius: '50%',
+                                color: '#3C7A4E',
+                              }}
+                            />
+                          )}
+                        </span>
+                      );
+                    })}
                   </div>
                 )}
               </div>
