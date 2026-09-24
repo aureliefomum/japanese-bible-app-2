@@ -2526,9 +2526,9 @@ function ReadPage({
         </div> {/* This closes the div with textAlign: 'center' (Div 6) */}
       </div> {/* This closes the div with maxWidth: 640 (Div 5) */}
     </div> {/* This closes the div with ref={scrollRef} (Div 4) */}
-  </> )/* This closes the React Fragment (Fragment 1) */}
-//); // This closes the return statement
-//} // This closes the ReadPage function
+    </>
+  );
+}
 
 /* ============================================================
    FLASHCARDS PAGE
