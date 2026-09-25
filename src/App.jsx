@@ -36,6 +36,7 @@ import {
   Gamepad2,
   GraduationCap,
   ChevronRight,
+  ChevronLeft,
   Shuffle,
   Clock,
 } from 'lucide-react';
@@ -1230,6 +1231,7 @@ export default function App() {
   const [minuteGoalInput, setMinuteGoalInput] = useState(10);
   const [reminderTime, setReminderTime] = useState('08:00');
   const [reminderDays, setReminderDays] = useState([1, 2, 3, 4, 5]);
+  const [syncStatus, setSyncStatus] = useState('idle');
 
   const stopRef = useRef(false);
   const utterRef = useRef(null);
@@ -1421,14 +1423,14 @@ export default function App() {
     const additions = [...seen.values()]
       .filter(({ tok }) => !existing.has(tok.t))
       .map(({ tok, verse }) => ({
-        id: `|${tok.t}-$|{Date.now()}-|${Math.random()}`,
+        id: `${tok.t}-${Date.now()}-${Math.random()}`,
             jp: tok.t,
             reading: tok.r,
             romaji: convertKana(tok.r),
             meaning: MEANINGS[tok.t],
             box: 1,
             due: Date.now(),
-            exVerse: { ref: `Genesis ${currentChapter}:$|{verse.v}`, jp: verse.jp, en: verse.en }, // Make ref dynamic
+            exVerse: { ref: `Genesis ${currentChapter}:${verse.v}`, jp: verse.jp, en: verse.en }, // Make ref dynamic
       }));
     if (additions.length === 0) {
       showToast('All chapter words already saved');
