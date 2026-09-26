@@ -1237,7 +1237,7 @@ export default function App() {
   const utterRef = useRef(null);
   const startTimeoutRef = useRef(null);
   const readVerseRefs = useRef({});
-  const CH_KEY = 'Genesis-1';
+  const CH_KEY = `Genesis-${currentChapter}`;
 
   useEffect(() => {
     const load = () => setVoices(window.speechSynthesis?.getVoices() || []);
