@@ -1511,15 +1511,16 @@ export default function App() {
     }
     stopRef.current = false;
     setChapterPlaying(true);
+    const chapterContent = CHAPTER_DATA[currentChapter] || GENESIS_1;
     let i = 0;
     const next = () => {
-      if (stopRef.current || i >= GENESIS_1.length) {
+      if (stopRef.current || i >= chapterContent.length) {
         setChapterPlaying(false);
         setPlayingIdx(null);
         return;
       }
       setPlayingIdx(i);
-      speak(GENESIS_1[i].jp, () => {
+      speak(chapterContent[i].jp, () => {
         i += 1;
         next();
       });
