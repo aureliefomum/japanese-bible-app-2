@@ -1275,6 +1275,7 @@ export default function App() {
   const [audioWarning, setAudioWarning] = useState(false);
   const [flashcards, setFlashcards] = useState([]);
   const [reviewIdx, setReviewIdx] = useState(0);
+  const [lastGraded, setLastGraded] = useState(null);
   const [reviewFlipped, setReviewFlipped] = useState(false);
   const [voices, setVoices] = useState([]);
   const [progress, setProgress] = useState(DEFAULT_PROGRESS);
@@ -1638,6 +1639,8 @@ export default function App() {
   const currentCard = reviewDeck[reviewIdx % Math.max(reviewDeck.length, 1)];
   const gradeCard = (know) => {
     if (!currentCard) return;
+    const previousBox = currentCard.box;
+    const previousDue = currentCard.due;
     const box = know ? Math.min(currentCard.box + 1, 5) : 1;
     const daysOut = [0, 1, 2, 4, 7, 14][box];
     const due = Date.now() + daysOut * 24 * 60 * 60 * 1000;
@@ -1653,8 +1656,32 @@ export default function App() {
       studyLog,
       todayStats: { ...stats, cards: stats.cards + 1 },
     });
+    setLastGraded({
+      cardId: currentCard.id,
+      previousBox,
+      previousDue,
+      reviewIdx,
+    });
     setReviewFlipped(false);
     setReviewIdx((n) => n + 1);
+  };
+  const undoLastGrade = () => {
+    if (!lastGraded) return;
+    persistCards(
+      flashcards.map((c) =>
+        c.id === lastGraded.cardId
+          ? { ...c, box: lastGraded.previousBox, due: lastGraded.previousDue }
+          : c
+      )
+    );
+    const stats = freshTodayStats(progress.todayStats);
+    persistProgress({
+      ...progress,
+      todayStats: { ...stats, cards: Math.max(0, stats.cards - 1) },
+    });
+    setReviewIdx(lastGraded.reviewIdx);
+    setReviewFlipped(true);
+    setLastGraded(null);
   };
 
   const chaptersRead = Object.values(progress.readChapters).filter(
@@ -1982,6 +2009,8 @@ export default function App() {
             setMinuteGoalInput={setMinuteGoalInput}
             saveDailyGoals={saveDailyGoals}
             speak={speak}
+            onUndo={undoLastGrade}
+  canUndo={!!lastGraded}
           />
         )}
 
@@ -2608,6 +2637,8 @@ function FlashcardsPage({
   setMinuteGoalInput,
   saveDailyGoals,
   speak,
+  onUndo,
+  canUndo,
 }) {
   const [showGoals, setShowGoals] = useState(false);
   const [grading, setGrading] = useState(false);
@@ -2942,6 +2973,25 @@ function FlashcardsPage({
       <Check size={14} /> Got it
     </button>
   </div>
+)}
+{!flipped && canUndo && (
+  <button
+    onClick={onUndo}
+    style={{
+      display: 'flex',
+      alignItems: 'center',
+      gap: 6,
+      padding: '8px 16px',
+      borderRadius: 8,
+      border: `1px solid #DDD0B8`,
+      color: SUB,
+      background: 'transparent',
+      cursor: 'pointer',
+      fontSize: 13,
+    }}
+  >
+    <ChevronLeft size={14} /> Go back to previous card
+  </button>
 )}
         </div>
       )}
