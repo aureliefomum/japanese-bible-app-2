@@ -2844,14 +2844,33 @@ function FlashcardsPage({
                     }}
                   >
                     <div
-                      style={{
-                        fontFamily: "'Noto Serif JP', serif",
-                        fontSize: 14,
-                        lineHeight: 1.6,
-                      }}
-                    >
-                      {highlightExample(currentCard.exVerse.jp, currentCard.jp)}
-                    </div>
+  style={{
+    display: 'flex',
+    alignItems: 'center',
+    gap: 6,
+    fontFamily: "'Noto Serif JP', serif",
+    fontSize: 14,
+    lineHeight: 1.6,
+  }}
+>
+  <span>{highlightExample(currentCard.exVerse.jp, currentCard.jp)}</span>
+  <button
+    onClick={(e) => {
+      e.stopPropagation();
+      speak(currentCard.exVerse.jp);
+    }}
+    style={{
+      background: 'none',
+      border: 'none',
+      cursor: 'pointer',
+      color: SUB,
+      padding: 2,
+      flexShrink: 0,
+    }}
+  >
+    <Volume2 size={14} />
+  </button>
+</div>
                     <div
                       style={{
                         fontSize: 11.5,
