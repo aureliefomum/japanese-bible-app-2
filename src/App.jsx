@@ -1392,9 +1392,10 @@ export default function App() {
       showToast(`${jp} is already saved`);
       return;
     }
+    const chapterContent = CHAPTER_DATA[currentChapter] || GENESIS_1;
     const verse =
-      GENESIS_1.find((v) => v.v === verseNum) ||
-      GENESIS_1.find((v) => v.jp.includes(jp));
+      chapterContent.find((v) => v.v === verseNum) ||
+      chapterContent.find((v) => v.jp.includes(jp));
     const card = {
       id: `${jp}-${Date.now()}`,
       jp,
@@ -1404,7 +1405,7 @@ export default function App() {
       box: 1,
       due: Date.now(),
       exVerse: verse
-        ? { ref: `Genesis 1:${verse.v}`, jp: verse.jp, en: verse.en }
+        ? { ref: `Genesis ${currentChapter}:${verse.v}`, jp: verse.jp, en: verse.en }
         : null,
     };
     persistCards([...flashcards, card]);
