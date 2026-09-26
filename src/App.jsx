@@ -1981,6 +1981,7 @@ export default function App() {
             minuteGoalInput={minuteGoalInput}
             setMinuteGoalInput={setMinuteGoalInput}
             saveDailyGoals={saveDailyGoals}
+            speak={speak}
           />
         )}
 
@@ -2606,6 +2607,7 @@ function FlashcardsPage({
   minuteGoalInput,
   setMinuteGoalInput,
   saveDailyGoals,
+  speak,
 }) {
   const [showGoals, setShowGoals] = useState(false);
   const highlightExample = (jpText, word) => {
@@ -2812,6 +2814,21 @@ function FlashcardsPage({
                   style={{ fontFamily: "'Noto Serif JP', serif", fontSize: 28 }}
                 >
                   {currentCard.jp}
+                  <button
+      onClick={(e) => {
+        e.stopPropagation();
+        speak(currentCard.jp);
+      }}
+      style={{
+        background: 'none',
+        border: 'none',
+        cursor: 'pointer',
+        color: SUB,
+        padding: 4,
+      }}
+    >
+      <Volume2 size={18} />
+    </button>
                 </div>
                 <div style={{ color: VERM, fontSize: 15 }}>
                   {currentCard.reading} &middot; {currentCard.romaji}
