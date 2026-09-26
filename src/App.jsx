@@ -1498,7 +1498,8 @@ export default function App() {
     setChapterPlaying(false);
     stopRef.current = true;
     setPlayingIdx(i);
-    speak(GENESIS_1[i].jp, () => setPlayingIdx(null));
+    const chapterContent = CHAPTER_DATA[currentChapter] || GENESIS_1;
+    speak(chapterContent[i].jp, () => setPlayingIdx(null));
   };
   const playChapter = () => {
     if (chapterPlaying) {
