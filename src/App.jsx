@@ -2610,6 +2610,12 @@ function FlashcardsPage({
   speak,
 }) {
   const [showGoals, setShowGoals] = useState(false);
+  const [grading, setGrading] = useState(false);
+
+  useEffect(() => {
+    setGrading(false);
+  }, [currentCard]);
+  
   const highlightExample = (jpText, word) => {
     const idx = jpText.indexOf(word);
     if (idx === -1) return jpText;
@@ -2890,41 +2896,53 @@ function FlashcardsPage({
             )}
           </div>
           {flipped && (
-            <div style={{ display: 'flex', gap: 12 }}>
-              <button
-                onClick={() => onGrade(false)}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 6,
-                  padding: '9px 18px',
-                  borderRadius: 8,
-                  border: `1px solid ${VERM}`,
-                  color: VERM,
-                  background: 'transparent',
-                  cursor: 'pointer',
-                }}
-              >
-                <RotateCcw size={14} /> Still learning
-              </button>
-              <button
-                onClick={() => onGrade(true)}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 6,
-                  padding: '9px 18px',
-                  borderRadius: 8,
-                  border: `1px solid ${INDIGO}`,
-                  color: '#fff',
-                  background: INDIGO,
-                  cursor: 'pointer',
-                }}
-              >
-                <Check size={14} /> Got it
-              </button>
-            </div>
-          )}
+  <div style={{ display: 'flex', gap: 12 }}>
+    <button
+      disabled={grading}
+      onClick={() => {
+        if (grading) return;
+        setGrading(true);
+        onGrade(false);
+      }}
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: 6,
+        padding: '9px 18px',
+        borderRadius: 8,
+        border: `1px solid ${VERM}`,
+        color: VERM,
+        background: 'transparent',
+        cursor: grading ? 'default' : 'pointer',
+        opacity: grading ? 0.5 : 1,
+      }}
+    >
+      <RotateCcw size={14} /> Still learning
+    </button>
+    <button
+      disabled={grading}
+      onClick={() => {
+        if (grading) return;
+        setGrading(true);
+        onGrade(true);
+      }}
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: 6,
+        padding: '9px 18px',
+        borderRadius: 8,
+        border: `1px solid ${INDIGO}`,
+        color: '#fff',
+        background: INDIGO,
+        cursor: grading ? 'default' : 'pointer',
+        opacity: grading ? 0.5 : 1,
+      }}
+    >
+      <Check size={14} /> Got it
+    </button>
+  </div>
+)}
         </div>
       )}
     </div>
