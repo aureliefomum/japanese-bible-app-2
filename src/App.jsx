@@ -780,7 +780,12 @@ function jpRomaji(text) {
   return verseRomaji(annotate(text));
 }
 
-
+const KANJI_NUMERALS = ['', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十'];
+function chapterKanji(n) {
+  if (n <= 10) return KANJI_NUMERALS[n];
+  if (n < 20) return '十' + KANJI_NUMERALS[n - 10];
+  return String(n); // fallback for chapters beyond 19
+}
 const BOOKS = [
   ['創世記', 'Genesis', 50],
   ['出エジプト記', 'Exodus', 40],
@@ -2424,6 +2429,9 @@ function ReadPage({
   const scrollRef = useRef(null);
 
   const chapterContent = CHAPTER_DATA[currentBook]?.[currentChapter] || GENESIS_1;
+  const bookEntry = BOOKS.find(([, en]) => en.toLowerCase() === currentBook);
+const bookJp = bookEntry ? bookEntry[0] : '創世記';
+const bookEn = bookEntry ? bookEntry[1] : 'Genesis';
 
   return (
     <>
@@ -2503,6 +2511,18 @@ function ReadPage({
         style={{ flex: 1, overflowY: 'auto', padding: '24px 0' }}
       >
         <div style={{ maxWidth: 640, margin: '0 auto', padding: '0 24px' }}>
+          <div style={{ textAlign: 'center', marginBottom: 24, paddingBottom: 20, borderBottom: `1px solid ${LINE}` }}>
+            <div style={{ fontFamily: "'Noto Serif JP', serif", fontSize: 26, color: INDIGO, marginBottom: 4 }}>
+              {bookJp} {chapterKanji(currentChapter)}章
+            </div>
+            <div style={{ fontSize: 12.5, color: VERM, marginBottom: 2 }}>
+              {convertKana(bookJp)} {convertKana(chapterKanji(currentChapter))}shō
+            </div>
+            <div style={{ fontFamily: "'Shippori Mincho', serif", fontSize: 18, fontWeight: 700, color: INK }}>
+              {bookEn} {currentChapter}
+            </div>
+          </div>
+         
           {chapterContent.map((verse, i) => {
             const tokens = annotate(verse.jp, verse.overrides);
             return (
