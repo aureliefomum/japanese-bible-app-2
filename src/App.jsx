@@ -1532,7 +1532,6 @@ export default function App() {
       return;
     }
     try {
-      window.speechSynthesis.cancel();
       clearTimeout(startTimeoutRef.current);
       setTimeout(() => {
         const u = new SpeechSynthesisUtterance(text);
@@ -1578,6 +1577,7 @@ export default function App() {
     }
   };
   const playVerse = (i) => {
+    window.speechSynthesis?.cancel();
     setChapterPlaying(false);
     stopRef.current = true;
     setPlayingIdx(i);
