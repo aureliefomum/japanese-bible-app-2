@@ -373,9 +373,11 @@ function useFonts() {
     { v: 24, jp: "神は人を追い出し、エデンの園の東に、ケルビムと、回る炎のつるぎとを置いて、命の木の道を守らせられた。", en: "So he drove out the man; and he placed at the east of the garden of Eden Cherubims, and a flaming sword which turned every way, to keep the way of the tree of life." },
   ];
   const CHAPTER_DATA = {
-    1: GENESIS_1,
-    2: GENESIS_2,
-    // We'll add Genesis 3 here once you have it
+    genesis: {
+      1: GENESIS_1,
+      2: GENESIS_2,
+      3: GENESIS_3,
+    },
   };
 
 /* ============================================================
