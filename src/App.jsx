@@ -1839,7 +1839,7 @@ export default function App() {
                             isChapterAvailable
                               ? () => {
                                   setPage('read');
-                                  setCurrentChapter(chapterNum); // Set the current chapter
+                                  changeChapter(chapterNum); // Set the current chapter
                                   showToast(`Genesis ${chapterNum}`);
                                 }
                               : undefined
@@ -2010,7 +2010,7 @@ export default function App() {
             setShowFurigana={setShowFurigana}
             currentBook={currentBook}
             currentChapter={currentChapter}
-            setCurrentChapter={setCurrentChapter}
+            setCurrentChapter={changeChapter}
             showRomaji={showRomaji}
             setShowRomaji={setShowRomaji}
             showTranslation={showTranslation}
