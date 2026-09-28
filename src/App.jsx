@@ -405,6 +405,7 @@ function useFonts() {
       1: GENESIS_1,
       2: GENESIS_2,
       3: GENESIS_3,
+      4: GENESIS_4,
     },
   };
 
