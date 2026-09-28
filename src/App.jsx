@@ -1538,43 +1538,41 @@ export default function App() {
     }
     try {
       clearTimeout(startTimeoutRef.current);
-      setTimeout(() => {
-        const u = new SpeechSynthesisUtterance(text);
-        u.lang = 'ja-JP';
-        u.rate = rate;
-        const freshVoices = window.speechSynthesis.getVoices();
-        const jaVoice =
-          freshVoices.find((v) => v.lang?.startsWith('ja')) ||
-          voices.find((v) => v.lang?.startsWith('ja'));
-        if (jaVoice) u.voice = jaVoice;
-        let started = false;
-        u.onstart = () => {
-          started = true;
-          setAudioWarning(false);
-        };
-        u.onend = () => {
-          onend?.();
-        };
-        u.onerror = () => {
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = 'ja-JP';
+      u.rate = rate;
+      const freshVoices = window.speechSynthesis.getVoices();
+      const jaVoice =
+        freshVoices.find((v) => v.lang?.startsWith('ja')) ||
+        voices.find((v) => v.lang?.startsWith('ja'));
+      if (jaVoice) u.voice = jaVoice;
+      let started = false;
+      u.onstart = () => {
+        started = true;
+        setAudioWarning(false);
+      };
+      u.onend = () => {
+        onend?.();
+      };
+      u.onerror = () => {
+        showToast(
+          'Playback was interrupted — try the speaker icon on a single verse instead'
+        );
+        setChapterPlaying(false);
+        setPlayingIdx(null);
+      };
+      utterRef.current = u;
+      window.speechSynthesis.speak(u);
+      startTimeoutRef.current = setTimeout(() => {
+        if (!started) {
+          setAudioWarning(true);
           showToast(
-            'Playback was interrupted \u2014 try the speaker icon on a single verse instead'
+            "Audio didn't start — your browser may be blocking automatic playback. Try tapping the speaker icon on a single verse."
           );
           setChapterPlaying(false);
           setPlayingIdx(null);
-        };
-        utterRef.current = u; // keep a strong reference so it isn't garbage-collected mid-speech
-        window.speechSynthesis.speak(u);
-        startTimeoutRef.current = setTimeout(() => {
-          if (!started) {
-            setAudioWarning(true);
-            showToast(
-              "Audio didn't start \u2014 your browser may be blocking automatic playback. Try tapping the speaker icon on a single verse."
-            );
-            setChapterPlaying(false);
-            setPlayingIdx(null);
-          }
-        }, 2500);
-      }, 60);
+        }
+      }, 2500);
     } catch (e) {
       showToast("Couldn't start audio in this browser");
       setChapterPlaying(false);
@@ -1598,7 +1596,7 @@ export default function App() {
     }
     stopRef.current = false;
     setChapterPlaying(true);
-    const chapterContent = CHAPTER_DATA[currentBook]?.[currentChapter] || GENESIS_1;rContent = CHAPTER_DATA[currentChapter] || GENESIS_1;
+    const chapterContent = CHAPTER_DATA[currentBook]?.[currentChapter] || GENESIS_1;
     let i = 0;
     const next = () => {
       if (stopRef.current || i >= chapterContent.length) {
@@ -1613,6 +1611,14 @@ export default function App() {
       });
     };
     next();
+  };
+
+  const changeChapter = (newChapter) => {
+    window.speechSynthesis?.cancel();
+    stopRef.current = true;
+    setChapterPlaying(false);
+    setPlayingIdx(null);
+    setCurrentChapter(newChapter);
   };
 
   /* ---------- Reading progress ---------- */
@@ -2516,7 +2522,7 @@ const bookEn = bookEntry ? bookEntry[1] : 'Genesis';
               {bookJp} {chapterKanji(currentChapter)}章
             </div>
             <div style={{ fontSize: 12.5, color: VERM, marginBottom: 2 }}>
-              {convertKana(bookJp)} {convertKana(chapterKanji(currentChapter))}shō
+              Sōseiki {chapterKanji(currentChapter) === '一' ? 'Isshō' : `${currentChapter}shō`}
             </div>
             <div style={{ fontFamily: "'Shippori Mincho', serif", fontSize: 18, fontWeight: 700, color: INK }}>
               {bookEn} {currentChapter}
