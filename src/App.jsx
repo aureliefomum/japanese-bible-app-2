@@ -1291,6 +1291,7 @@ export default function App() {
 
   const [page, setPage] = useState('home'); // home | read | flashcards | more
   const [currentChapter, setCurrentChapter] = useState(1); // Start with Genesis 1
+  const [currentBook, setCurrentBook] = useState('genesis');
   const [showFurigana, setShowFurigana] = useState(true);
   const [showRomaji, setShowRomaji] = useState(false);
   const [showTranslation, setShowTranslation] = useState(true);
@@ -1473,7 +1474,7 @@ export default function App() {
       showToast(`${jp} is already saved`);
       return;
     }
-    const chapterContent = CHAPTER_DATA[currentChapter] || GENESIS_1;
+    const chapterContent = CHAPTER_DATA[currentBook]?.[currentChapter] || GENESIS_1;
     const verse =
       chapterContent.find((v) => v.v === verseNum) ||
       chapterContent.find((v) => v.jp.includes(jp));
@@ -1494,7 +1495,7 @@ export default function App() {
   };
   const addAllChapterVocab = (currentChapter) => { // Add currentChapter here
     const seen = new Map();
-    const chapterContent = CHAPTER_DATA[currentChapter] || GENESIS_1; // Use CHAPTER_DATA
+    const chapterContent = CHAPTER_DATA[currentBook]?.[currentChapter] || GENESIS_1;
     chapterContent.forEach((verse) => { // Use chapterContent
       annotate(verse.jp, verse.overrides).forEach((tok) => {
         if (tok.r && MEANINGS[tok.t] && !seen.has(tok.t))
@@ -1580,8 +1581,7 @@ export default function App() {
     setChapterPlaying(false);
     stopRef.current = true;
     setPlayingIdx(i);
-    const chapterContent = CHAPTER_DATA[currentChapter] || GENESIS_1;
-    speak(chapterContent[i].jp, () => setPlayingIdx(null));
+    const chapterContent = CHAPTER_DATA[currentBook]?.[currentChapter] || GENESIS_1;    speak(chapterContent[i].jp, () => setPlayingIdx(null));
   };
   const playChapter = () => {
     if (chapterPlaying) {
@@ -1593,7 +1593,7 @@ export default function App() {
     }
     stopRef.current = false;
     setChapterPlaying(true);
-    const chapterContent = CHAPTER_DATA[currentChapter] || GENESIS_1;
+    const chapterContent = CHAPTER_DATA[currentBook]?.[currentChapter] || GENESIS_1;rContent = CHAPTER_DATA[currentChapter] || GENESIS_1;
     let i = 0;
     const next = () => {
       if (stopRef.current || i >= chapterContent.length) {
@@ -1820,8 +1820,7 @@ export default function App() {
                                         {Array.from({ length: chapters }).map((_, ci) => {
                       const chapterNum = ci + 1;
                       const isCurrent = chapterNum === currentChapter;
-                      const isChapterAvailable = CHAPTER_DATA[chapterNum]; // Check if chapter data exists
-                      console.log(`Chapter ${chapterNum}: isChapterAvailable = ${isChapterAvailable}`);
+                      const isChapterAvailable = CHAPTER_DATA.genesis?.[chapterNum];
                       return (
                         <span
                           key={ci}
@@ -1998,6 +1997,7 @@ export default function App() {
           <ReadPage
             showFurigana={showFurigana}
             setShowFurigana={setShowFurigana}
+            currentBook={currentBook}
             currentChapter={currentChapter}
             setCurrentChapter={setCurrentChapter}
             showRomaji={showRomaji}
@@ -2415,6 +2415,7 @@ function ReadPage({
   isRead,
   markChapter,
   setPopup,
+  currentBook,
   currentChapter, // Add this
   setCurrentChapter, // Add this
   addAllChapterVocab,
@@ -2422,7 +2423,7 @@ function ReadPage({
 }) {
   const scrollRef = useRef(null);
 
-  const chapterContent = CHAPTER_DATA[currentChapter] || GENESIS_1; // Fallback to Genesis 1 if chapter not found
+  const chapterContent = CHAPTER_DATA[currentBook]?.[currentChapter] || GENESIS_1;
 
   return (
     <>
@@ -2622,7 +2623,7 @@ function ReadPage({
             <ChevronLeft size={14} /> Previous chapter
           </Btn>
         )}
-        {CHAPTER_DATA[currentChapter + 1] && ( // Only show if there's a next chapter
+{CHAPTER_DATA[currentBook]?.[currentChapter + 1] && (// Only show if there's a next chapter
           <Btn
             onClick={() => {
               setCurrentChapter(currentChapter + 1);
@@ -2633,7 +2634,7 @@ function ReadPage({
           </Btn>
         )}
   </div>
-  {!CHAPTER_DATA[currentChapter + 1] && ( // Only show if there's NO next chapter
+  {!CHAPTER_DATA[currentBook]?.[currentChapter + 1] && ( // Only show if there's NO next chapter
     <div style={{ marginTop: 18, fontSize: 12.5, color: SUB }}>
       More chapters &amp;mdash; coming soon.
     </div>
